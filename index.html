@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex Recycling Co. — Free Appliance Pickup in Phoenix, AZ</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --charcoal: #1a1a1a;
+    --steel: #2c2c2c;
+    --rust: #c84b1f;
+    --rust-light: #e05a28;
+    --rust-dark: #a03a15;
+    --lime: #b8d400;
+    --cream: #f5f0e8;
+    --gray: #888;
+    --light-gray: #ccc;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--black);
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 5%;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.06em;
+    color: var(--cream);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--rust); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--light-gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--rust-light); }
+
+  .nav-cta {
+    background: var(--rust);
+    color: #fff !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--rust-light) !important; color: #fff; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 5% 6rem 8%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 2.5rem;
+    height: 1px;
+    background: var(--rust);
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.8rem;
+  }
+
+  .hero h1 .accent { color: var(--rust); }
+  .hero h1 .lime { color: var(--lime); }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--light-gray);
+    max-width: 440px;
+    margin-bottom: 2.8rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--rust);
+    color: #fff;
+    padding: 1rem 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover { background: var(--rust-light); transform: translateY(-1px); }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: transparent;
+    color: var(--cream);
+    padding: 1rem 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 2px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-secondary:hover { border-color: var(--rust); color: var(--rust-light); }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    color: var(--rust);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    color: var(--gray);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+  }
+
+  /* Hero right - visual panel */
+  .hero-right {
+    position: relative;
+    background: var(--charcoal);
+    overflow: hidden;
+  }
+
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 30px,
+        rgba(200,75,31,0.04) 30px,
+        rgba(200,75,31,0.04) 31px
+      );
+  }
+
+  .hero-graphic {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .big-icon-wrap {
+    position: relative;
+  }
+
+  .big-icon {
+    font-size: 16rem;
+    line-height: 1;
+    opacity: 0.07;
+    user-select: none;
+  }
+
+  .badge-free {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--rust);
+    color: #fff;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.12em;
+    padding: 1.2rem 2rem;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 3px;
+    box-shadow: 0 0 60px rgba(200,75,31,0.4);
+  }
+
+  .badge-free small {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    margin-top: 0.2rem;
+    opacity: 0.85;
+  }
+
+  .hero-tag {
+    position: absolute;
+    bottom: 2rem;
+    left: 0; right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .tag {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--light-gray);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+  }
+
+  .tag.green { border-color: var(--lime); color: var(--lime); background: rgba(184,212,0,0.05); }
+
+  /* SERVICES */
+  .services {
+    padding: 7rem 8%;
+    background: var(--charcoal);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: 0.03em;
+    line-height: 1;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .service-card {
+    background: var(--charcoal);
+    padding: 2.5rem;
+    position: relative;
+    transition: background 0.2s;
+    overflow: hidden;
+  }
+
+  .service-card:hover { background: var(--steel); }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--rust);
+    transition: width 0.3s ease;
+  }
+
+  .service-card:hover::after { width: 100%; }
+
+  .service-icon {
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .service-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.7rem;
+  }
+
+  .service-desc {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--gray);
+  }
+
+  .service-free {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--lime);
+    border: 1px solid var(--lime);
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  /* WHY */
+  .why {
+    padding: 7rem 8%;
+    background: var(--black);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .why-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    margin-top: 2.5rem;
+  }
+
+  .why-item {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+  }
+
+  .why-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--rust);
+    line-height: 1;
+    min-width: 2rem;
+  }
+
+  .why-text strong {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+  }
+
+  .why-text p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--gray);
+  }
+
+  .why-visual {
+    background: var(--charcoal);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 4px;
+    padding: 3rem;
+    text-align: center;
+  }
+
+  .why-big-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    color: var(--rust);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .why-visual p {
+    font-size: 0.88rem;
+    color: var(--gray);
+    line-height: 1.6;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .appliances-accepted {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .appliances-accepted h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1rem;
+  }
+
+  .appliance-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .chip {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--light-gray);
+    font-size: 0.78rem;
+    padding: 0.35rem 0.8rem;
+    border-radius: 2px;
+  }
+
+  /* INTAKE FORM */
+  .intake {
+    padding: 7rem 8%;
+    background: var(--charcoal);
+  }
+
+  .intake-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .intake-info h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    line-height: 1;
+    margin-bottom: 1.2rem;
+  }
+
+  .intake-info p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--gray);
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .contact-item a {
+    color: var(--cream);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-item a:hover { color: var(--rust-light); }
+
+  .contact-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+    background: var(--steel);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  /* FORM */
+  form {
+    background: var(--steel);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 4px;
+    padding: 3rem;
+  }
+
+  .form-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.4rem;
+  }
+
+  .form-subtitle {
+    font-size: 0.83rem;
+    color: var(--gray);
+    margin-bottom: 2rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .form-group.full { grid-column: 1 / -1; }
+
+  label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--light-gray);
+  }
+
+  input, select, textarea {
+    background: var(--charcoal);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--cream);
+    padding: 0.85rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    appearance: none;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--rust);
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: var(--gray);
+  }
+
+  select option { background: var(--charcoal); }
+
+  textarea { resize: vertical; min-height: 100px; }
+
+  .checkbox-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+  }
+
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--light-gray);
+    cursor: pointer;
+  }
+
+  .checkbox-item input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    padding: 0;
+    margin: 0;
+    accent-color: var(--rust);
+    cursor: pointer;
+  }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--rust);
+    color: #fff;
+    border: none;
+    padding: 1.1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .submit-btn:hover { background: var(--rust-light); transform: translateY(-1px); }
+
+  .form-note {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--gray);
+    margin-top: 1rem;
+  }
+
+  /* SUCCESS */
+  #success-msg {
+    display: none;
+    background: rgba(184,212,0,0.1);
+    border: 1px solid var(--lime);
+    color: var(--lime);
+    padding: 1.5rem;
+    border-radius: 2px;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 3rem 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.06em;
+  }
+
+  .footer-logo span { color: var(--rust); }
+
+  .footer-tagline {
+    font-size: 0.78rem;
+    color: var(--gray);
+    margin-top: 0.25rem;
+  }
+
+  .footer-right {
+    font-size: 0.78rem;
+    color: var(--gray);
+    text-align: right;
+  }
+
+  .footer-right a {
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-right a:hover { color: var(--rust-light); }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 8rem 6% 4rem; }
+    .nav-links { display: none; }
+    .why { grid-template-columns: 1fr; gap: 3rem; }
+    .why-visual { display: none; }
+    .intake-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .checkbox-group { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-right { text-align: center; }
+    form { padding: 2rem 1.5rem; }
+    .services { padding: 5rem 5%; }
+    .why, .intake { padding: 5rem 5%; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-stats { gap: 1.5rem; }
+    .hero-actions { flex-direction: column; }
+    .btn-primary, .btn-secondary { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Apex<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#request" class="nav-cta">Schedule Pickup</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Phoenix, Arizona • Est. Apex Recycling Co.</p>
+    <h1>
+      Free<br>
+      Appliance<br>
+      <span class="accent">Pickup</span><br>
+      <span class="lime">& Recycling</span>
+    </h1>
+    <p class="hero-sub">We haul away your old, unwanted appliances at no charge — keeping junk out of Phoenix landfills and putting materials back to work.</p>
+    <div class="hero-actions">
+      <a href="#request" class="btn-primary">📅 Schedule Free Pickup</a>
+      <a href="tel:4805617056" class="btn-secondary">📞 (480) 561-7056</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Free Removal</div>
+      </div>
+      <div>
+        <div class="stat-num">PHX</div>
+        <div class="stat-label">Phoenix Area</div>
+      </div>
+      <div>
+        <div class="stat-num">♻</div>
+        <div class="stat-label">Eco Responsible</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-graphic">
+      <div class="big-icon-wrap">
+        <div class="big-icon">♻</div>
+        <div class="badge-free">
+          FREE PICKUP
+          <small>No Hidden Fees. Ever.</small>
+        </div>
+      </div>
+    </div>
+    <div class="hero-tag">
+      <span class="tag">Homeowners</span>
+      <span class="tag">Landlords</span>
+      <span class="tag green">♻ Zero Landfill Goal</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header">
+    <div>
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">Our Services</h2>
+    </div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">🚛</span>
+      <h3 class="service-name">Free Appliance Pickup & Removal</h3>
+      <p class="service-desc">We come to you. Schedule a pickup and we'll haul away your old appliances at absolutely no cost to you.</p>
+      <span class="service-free">Always Free</span>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🔩</span>
+      <h3 class="service-name">Scrap Metal Recycling</h3>
+      <p class="service-desc">Appliances are broken down and metals are responsibly recycled, keeping valuable materials out of the waste stream.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🔧</span>
+      <h3 class="service-name">Used Appliance Parts Resale</h3>
+      <p class="service-desc">Salvageable components get a second life, sold as used parts to repair shops and DIY homeowners.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🏢</span>
+      <h3 class="service-name">Property Manager Haul-Away</h3>
+      <p class="service-desc">Serving apartment complexes and property managers with bulk appliance removal between tenants. Fast and hassle-free.</p>
+      <span class="service-free">Volume Available</span>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">❄️</span>
+      <h3 class="service-name">Refrigerant Recovery & Disposal</h3>
+      <p class="service-desc">Certified refrigerant recovery for fridges and AC units — handled properly to protect the environment and stay EPA compliant.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">✅</span>
+      <h3 class="service-name">Working Appliance Resale</h3>
+      <p class="service-desc">Appliances still in working condition are cleaned and resold, giving them a new home instead of the landfill.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="why">
+  <div>
+    <p class="section-label">Why Choose Us</p>
+    <h2 class="section-title">Simple. Free.<br>Responsible.</h2>
+    <ul class="why-list">
+      <li class="why-item">
+        <span class="why-num">01</span>
+        <div class="why-text">
+          <strong>No Cost to You</strong>
+          <p>We never charge for pickup or removal. Our business model makes it possible to offer this completely free.</p>
+        </div>
+      </li>
+      <li class="why-item">
+        <span class="why-num">02</span>
+        <div class="why-text">
+          <strong>Local Phoenix Business</strong>
+          <p>We're based right here in the Valley. Fast response times and a team that knows the area.</p>
+        </div>
+      </li>
+      <li class="why-item">
+        <span class="why-num">03</span>
+        <div class="why-text">
+          <strong>Environmentally Responsible</strong>
+          <p>We recycle, repurpose, and resell — maximizing material recovery and minimizing landfill waste.</p>
+        </div>
+      </li>
+      <li class="why-item">
+        <span class="why-num">04</span>
+        <div class="why-text">
+          <strong>We Take Almost Everything</strong>
+          <p>Washers, dryers, fridges, ovens, dishwashers, AC units — if it plugs in, we likely take it.</p>
+        </div>
+      </li>
+    </ul>
+    <div class="appliances-accepted">
+      <h4>We Accept</h4>
+      <div class="appliance-chips">
+        <span class="chip">Washers & Dryers</span>
+        <span class="chip">Refrigerators</span>
+        <span class="chip">Ovens & Stoves</span>
+        <span class="chip">Dishwashers</span>
+        <span class="chip">AC Units</span>
+        <span class="chip">Microwaves</span>
+        <span class="chip">Freezers</span>
+        <span class="chip">Water Heaters</span>
+      </div>
+    </div>
+  </div>
+  <div class="why-visual">
+    <div class="why-big-text">♻</div>
+    <div class="why-big-text" style="font-size:2.5rem; color: var(--lime); margin-top: 0.5rem;">Zero<br>Landfill<br>Goal</div>
+    <p style="margin-top:1.5rem;">Every appliance we collect is recycled, resold, or repurposed. Nothing goes to waste if we can help it.</p>
+  </div>
+</section>
+
+<!-- INTAKE FORM -->
+<section class="intake" id="request">
+  <div class="intake-inner">
+    <div class="intake-info">
+      <p class="section-label">Book a Pickup</p>
+      <h2>Request Your Free Haul-Away</h2>
+      <p>Fill out the form and we'll get back to you quickly to confirm your free pickup. No fees, no surprises.</p>
+      <div class="contact-block">
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <a href="tel:4805617056">(480) 561-7056</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <a href="mailto:apexrecyclingco@gmail.com">apexrecyclingco@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <span>Phoenix, Arizona & Surrounding Areas</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <form id="intakeForm">
+        <h3 class="form-title">Schedule Pickup</h3>
+        <p class="form-subtitle">We'll respond within 1 business day to confirm.</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name *</label>
+            <input type="text" id="fname" name="fname" placeholder="John" required>
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name *</label>
+            <input type="text" id="lname" name="lname" placeholder="Smith" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone *</label>
+            <input type="tel" id="phone" name="phone" placeholder="(480) 555-0000" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@email.com">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Pickup Address *</label>
+          <input type="text" id="address" name="address" placeholder="1234 W Example St, Phoenix, AZ 85001" required>
+        </div>
+
+        <div class="form-group">
+          <label for="type">Customer Type *</label>
+          <select id="type" name="type" required>
+            <option value="" disabled selected>Select one...</option>
+            <option>Homeowner</option>
+            <option>Landlord</option>
+            <option>Property Manager / Apartment Complex</option>
+            <option>Business</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Appliances for Pickup (check all that apply)</label>
+          <div class="checkbox-group">
+            <label class="checkbox-item"><input type="checkbox" name="items" value="Washer"> Washer</label>
+            <label class="checkbox-item"><input type="checkbox" name="items" value="Dryer"> Dryer</label>
+            <label class="checkbox-item"><input type="checkbox" name="items" value="Refrigerator"> Refrigerator</label>
+            <label class="checkbox-item"><input type="checkbox" name="items" value="Oven/Stove"> Oven / Stove</label>
+            <label class="checkbox-item"><input type="checkbox" name="items" value="Dishwasher"> Dishwasher</label>
+            <label class="checkbox-item"><input type="checkbox" name="items" value="AC Unit"> AC Unit</label>
+            <label class="checkbox-item"><input type="checkbox" name="items" value="Freezer"> Freezer</label>
+            <label class="checkbox-item"><input type="checkbox" name="items" value="Microwave"> Microwave</label>
+            <label class="checkbox-item"><input type="checkbox" name="items" value="Water Heater"> Water Heater</label>
+            <label class="checkbox-item"><input type="checkbox" name="items" value="Other"> Other</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Additional Notes</label>
+          <textarea id="notes" name="notes" placeholder="How many items? Any access instructions? Items in working condition? Let us know anything helpful..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Pickup Request →</button>
+        <p class="form-note">🔒 Your info is never sold or shared. Free pickup, no strings attached.</p>
+      </form>
+      <div id="success-msg">
+        ✅ <strong>Request received!</strong> We'll contact you within 1 business day to confirm your free pickup. Thanks for choosing Apex Recycling Co.!
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">Apex<span>.</span> Recycling Co.</div>
+    <div class="footer-tagline">Phoenix's Free Appliance Pickup & Recycling Service</div>
+  </div>
+  <div class="footer-right">
+    <a href="tel:4805617056">(480) 561-7056</a><br>
+    <a href="mailto:apexrecyclingco@gmail.com">apexrecyclingco@gmail.com</a><br>
+    <span style="margin-top:0.5rem; display:block;">© 2025 Apex Recycling Co. Phoenix, AZ</span>
+  </div>
+</footer>
+
+<script>
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Form submit — shows success message
+  // To actually send form data, you'd connect a service like Formspree or Netlify Forms
+  document.getElementById('intakeForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('success-msg').style.display = 'block';
+  });
+</script>
+</body>
+</html>
