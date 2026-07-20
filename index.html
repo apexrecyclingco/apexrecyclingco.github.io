@@ -1062,7 +1062,7 @@
     </div>
 
     <div>
-      <form id="intakeForm">
+      <form id="intakeForm" action="https://formspree.io/f/xykrjqkp" method="POST">
         <h3 class="form-title">Schedule Pickup</h3>
         <p class="form-subtitle">We'll respond within 1 business day to confirm.</p>
 
@@ -1129,9 +1129,7 @@
         <button type="submit" class="submit-btn">Submit Pickup Request →</button>
         <p class="form-note">🔒 Your info is never sold or shared. Free pickup, no strings attached.</p>
       </form>
-      <div id="success-msg">
-        ✅ <strong>Request received!</strong> We'll contact you within 1 business day to confirm your free pickup. Thanks for choosing Apex Recycling Co.!
-      </div>
+
     </div>
   </div>
 </section>
@@ -1161,13 +1159,7 @@
     });
   });
 
-  // Form submit — shows success message
-  // To actually send form data, you'd connect a service like Formspree or Netlify Forms
-  document.getElementById('intakeForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    this.style.display = 'none';
-    document.getElementById('success-msg').style.display = 'block';
-  });
+  // Form connected to Formspree — submissions go to apexrecyclingco@gmail.com
 
   function toggleFaq(btn) {
     const answer = btn.nextElementSibling;
